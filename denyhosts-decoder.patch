@@ -1,0 +1,28 @@
+diff -ru ossec-hids-100311-orig/etc/decoder.xml ossec-hids-100311/etc/decoder.xml
+--- ossec-hids-100311-orig/etc/decoder.xml	2010-03-10 13:08:07.000000000 -0500
++++ ossec-hids-100311/etc/decoder.xml	2010-03-11 16:17:09.000000000 -0500
+@@ -584,6 +584,24 @@
+ 
+ 
+ 
++<!-- DenyHosts decoder
++  - Examples:
++  - denyhosts: Added the following hosts to /etc/hosts.deny - 196.41.3.197 (mail.replay.co.za)
++  - WARNING: Could not add the following hosts to /etc/hosts.deny - 196.41.3.197 (mail.replay.co.za)
++  - Observed the following suspicious login activity??
++
++-->
++<decoder name="denyhosts">
++  <program_name>^denyhosts</program_name>
++</decoder>
++
++<decoder name="denyhosts-add">
++  <parent>denyhosts</parent>
++  <prematch>^Added</prematch>
++  <regex offset="after_prematch">the following hosts to \S+ - (\S+) \S+$</regex>
++  <order>srcip</order>
++</decoder>
++
+ <!-- Courier decoder
+   - Examples:
+   - pop3d-ssl: LOGIN FAILED, ip=[::ffff:192.168.0.200]

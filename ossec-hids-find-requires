@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# ossec-hids-find-requires
+
+/usr/lib/rpm/find-requires | sed -e 's/perl(DBI)//g'
+

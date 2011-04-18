@@ -1,0 +1,5 @@
+/var/ossec/logs/active-responses.log {
+    missingok
+    notifempty
+}
+

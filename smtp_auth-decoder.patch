@@ -1,0 +1,41 @@
+diff -ru ossec-hids-2.3.orig/etc/decoder.xml ossec-hids-2.3/etc/decoder.xml
+--- ossec-hids-2.3.orig/etc/decoder.xml	2009-11-09 15:32:29.000000000 -0500
++++ ossec-hids-2.3/etc/decoder.xml	2010-03-05 10:18:59.000000000 -0500
+@@ -538,6 +538,37 @@
+   <order>user, srcip</order>
+ </decoder>
+ 
++<!-- SMTP Auth decoder
++  - Examples:
++  - smtp_auth: SMTP connect from (null)@whq.atomicorp.com [10.10.11.134]
++  - smtp_auth: smtp_auth: SMTP user scott : logged in from (null)@dev.whq.atomicorp.com [10.10.11.134]
++-->
++<decoder name="smtpauth">
++  <program_name>^smtp_auth</program_name>
++</decoder>
++
++<decoder name="smtpauth-failed">
++  <parent>smtpauth</parent>
++  <prematch>^smtp_auth</prematch>
++  <regex offset="after_prematch">FAILED: (\S+) - password incorrect from \S+ [(\S+\d)]$</regex>
++  <order>user, srcip</order>
++</decoder>
++
++<decoder name="smtpauth-login">
++  <parent>smtpauth</parent>
++  <prematch>^SMTP</prematch>
++  <regex offset="after_prematch">user (\S+) : logged in from \S+ [(\S+\d)]$</regex>
++  <order>user, srcip</order>
++</decoder>
++
++
++<decoder name="smtpauth-generic">
++  <parent>smtpauth</parent>
++  <regex>[(\S+\d)]$</regex>
++  <order>srcip</order>
++</decoder>
++
++
+ 
+ 
+ <!-- Courier decoder
