@@ -8,9 +8,6 @@
 #  - rewrite init script (this one is not working)
 #  - review logrotate
 #  - review permissions
-#  - warning: Installed (but unpackaged) file(s) found:
-#    /var/ossec/bin/ossec-makelists
-#    /var/ossec/bin/ossec-regex
 
 
 
@@ -22,7 +19,7 @@
 Summary:	An Open Source Host-based Intrusion Detection System
 Name:		ossec-hids
 Version:	2.5.1
-Release:	1
+Release:	0.1
 License:	GPL v3
 Group:		Applications/System
 Source0:	http://www.ossec.net/files/%{name}-%{version}.tar.gz
@@ -399,6 +396,8 @@ chmod 644 %{SOURCE1}
 %{_localstatedir}/%{prg}/bin/%{prg}-analysisd
 %{_localstatedir}/%{prg}/bin/%{prg}-execd
 %{_localstatedir}/%{prg}/bin/%{prg}-logcollector
+%{_localstatedir}/%{prg}/bin/%{prg}-makelists
+%{_localstatedir}/%{prg}/bin/%{prg}-regex
 %{_localstatedir}/%{prg}/bin/%{prg}-maild
 %{_localstatedir}/%{prg}/bin/%{prg}-monitord
 %{_localstatedir}/%{prg}/bin/%{prg}-remoted
