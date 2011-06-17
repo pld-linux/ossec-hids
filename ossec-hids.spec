@@ -43,12 +43,11 @@ Patch11:	courier-imap-rules.patch
 Patch12:	denyhosts-decoder.patch
 Patch13:	%{name}-server-reload.patch
 URL:		http://www.%{prg}.net/
-BuildRequires:	coreutils
-BuildRequires:	glibc-devel
 BuildRequires:	apache-devel
-BuildRequires:	openssl-devel
-BuildRequires:	mysql-devel
+BuildRequires:	coreutils
 BuildRequires:	inotify-tools-devel
+BuildRequires:	mysql-devel
+BuildRequires:	openssl-devel
 Requires(post):	fileutils
 Requires(post,preun):	/sbin/chkconfig
 Requires(postun):	/usr/sbin/groupdel
