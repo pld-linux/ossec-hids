@@ -17,9 +17,10 @@
 %define prg  ossec
 
 Summary:	An Open Source Host-based Intrusion Detection System
+Summary(pl.UTF-8):	Otwartoźródłowy system monitorująco-kontrolujący systemy zawierający wszelkie apekty HIDS
 Name:		ossec-hids
 Version:	2.5.1
-Release:	0.1
+Release:	0.2
 License:	GPL v3
 Group:		Applications/System
 Source0:	http://www.ossec.net/files/%{name}-%{version}.tar.gz
@@ -61,16 +62,18 @@ Requires:	inotify-tools
 Provides:	ossec = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-
-
 ExclusiveOS:	linux
-
 
 %description
 OSSEC HIDS is an Open Source Host-based Intrusion Detection System. It
 performs log analysis, integrity checking, root kit detection,
 time-based alerting and active response.
 
+%description -l pl.UTF-8
+OSSEC jest platformą monitorującą i kontrolującą systemy, zawierającą 
+wszystkie aspekty HIDS (host-based intrusion detection), systemu 
+monitorującego logi oraz SIM/SIEM (Security Informaton and Event 
+Manager) w jednym rozwiązaniu. 
 
 %package client
 Summary:	The OSSEC HIDS Client
@@ -81,7 +84,6 @@ Conflicts:	%{name}-server
 %if %{asl}
 Requires:	perl-DBD-SQLite
 %endif
-
 
 %package server
 Summary:	The OSSEC HIDS Server
@@ -98,11 +100,19 @@ Requires:	perl-DBD-SQLite
 The %{name}-client package contains the client part of the OSSEC HIDS.
 Install this package on every client to be monitored.
 
+%description client -l pl.UTF-8
+Paczka %{name}-client zawiera wszelkie elementy niezbędne do pracy
+jako klient systemu OSSEC HIDS.
+
 %description server
 The %{name}-server package contains the server part of the OSSEC HIDS.
 Install this package on a central machine for log collection and
 alerting.
 
+%description server -l pl.UTF-8
+Paczka %{name}-server zawiera elementy niezbędne do uruchomienia 
+centralnego serwera monitorującego i zbierającego alerty i logi z 
+serwerów zdalnych (klientów).
 
 %prep
 %setup -q
