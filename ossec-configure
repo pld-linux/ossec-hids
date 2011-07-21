@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Global Variables
-OSSEC_HOME="/var/ossec/"
+OSSEC_HOME="/var/ossec"
 OSSEC_CONF_FILE="$OSSEC_HOME/etc/ossec.conf"
 RULES_TEMPLATE="$OSSEC_HOME/etc/templates/rules.template"
 SYSCHECK_TEMPLATE="$OSSEC_HOME/etc/templates/syscheck.template"
@@ -202,7 +202,7 @@ if [ "$INPUTTEXT" == "y" ]; then
 fi
 
 # Email/log alerts
-echo "  <alerts" >> $OSSEC_CONF_FILE.new
+echo "  <alerts>" >> $OSSEC_CONF_FILE.new
 echo "    <log_alert_level>1</log_alert_level>" >>$OSSEC_CONF_FILE.new
 if [ "$EMAIL_NOTIFICATION" == "y" ]; then
   echo "    <email_alert_level>7</email_alert_level>" >> $OSSEC_CONF_FILE.new
@@ -301,7 +301,7 @@ done
 
 echo "</ossec_config>" >> $OSSEC_CONF_FILE.new
 mv $OSSEC_CONF_FILE $OSSEC_CONF_FILE.bak
-mv $OSSEC_CONF_FILE.new $OSSEC_CONF
+mv $OSSEC_CONF_FILE.new $OSSEC_CONF_FILE
 echo "Configuration complete."
 echo
 
