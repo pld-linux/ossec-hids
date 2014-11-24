@@ -43,7 +43,7 @@ Patch10:	smtp_auth-decoder.patch
 Patch11:	courier-imap-rules.patch
 Patch12:	denyhosts-decoder.patch
 Patch13:	%{name}-server-reload.patch
-URL:		http://www.%{prg}.net/
+URL:		http://www.ossec.net/
 BuildRequires:	apache-devel
 BuildRequires:	coreutils
 BuildRequires:	inotify-tools-devel
